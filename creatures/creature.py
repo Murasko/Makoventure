@@ -1,9 +1,11 @@
-class Creature():
-    def __init__(self):
-        pass
+class Creature:
+    def __init__(self, health, level, damage):
+        self.health = health
+        self.level = level
+        self.damage = damage
 
     def attack(self, enemy):
-        pass
+        enemy.take_damage(self.damage)
 
     def take_damage(self, damage):
         pass
