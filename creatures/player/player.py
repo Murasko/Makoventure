@@ -3,11 +3,12 @@ from creatures.creature import Creature
 
 class Player(Creature):
     def __init__(self, name):
-        self.name = name
         super().__init__()
+        self.name = name
 
     def run_away(self):
         print("Running!")
 
     def meditate(self):
-        pass
+        print("Du setzt dich entspannt hin und beginnst zu meditieren...")
+        self.__health += 5

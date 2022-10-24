@@ -1,17 +1,30 @@
+import random
+
+
 class Creature:
     def __init__(self):
         self.name = "Undefined Name"
-        self.health = 10
+        self.__health = 10
+        self.__damage = 5
         self.level = 1
-        self.damage = 5
+
+    @property
+    def health(self):
+        return self.__health
+
+    @property
+    def damage(self):
+        return self.__damage
 
     def attack(self, enemy):
-        print(f"Greife {self.name} mit {self.damage} an.")
         enemy.take_damage(self.damage)
 
     def take_damage(self, damage):
-        self.health -= damage
-        print(f"{self.name} hat noch {self.health} Leben verbleibend")
+        self.__health -= damage
 
     def level_up(self):
-        pass
+        level_up_attribute = random.randint(1, 100)
+        if level_up_attribute % 2 == 0:
+            self.__health += 3
+        else:
+            self.__damage += 1
