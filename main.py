@@ -1,6 +1,5 @@
 from src.character.player.player import Player
 from src.map.map import Map
-from src.map.field import Field
 
 if __name__ == '__main__':
     name = input("Enter your name ")
