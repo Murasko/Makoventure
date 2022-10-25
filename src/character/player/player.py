@@ -1,4 +1,4 @@
-from creatures.creature import Creature
+from src.character.character import Creature
 
 
 class Player(Creature):

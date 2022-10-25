@@ -21,10 +21,11 @@ class Creature:
 
     def take_damage(self, damage):
         self.__health -= damage
+        print(self.__health)
 
     def level_up(self):
-        level_up_attribute = random.randint(1, 100)
-        if level_up_attribute % 2 == 0:
+        level_up_attribute = random.randint(0, 1)
+        if level_up_attribute == 0:
             self.__health += 3
         else:
             self.__damage += 1
