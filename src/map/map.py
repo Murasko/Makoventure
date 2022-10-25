@@ -1,4 +1,4 @@
-from field import Field, gen_random
+from .field import gen_random
 
 
 class Map:

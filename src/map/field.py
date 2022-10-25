@@ -1,5 +1,5 @@
 import random
-from src.character.enemies import Enemy
+from src.character.enemies.enemy import Enemy
 
 
 def gen_random():
