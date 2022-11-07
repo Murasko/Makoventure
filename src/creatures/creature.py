@@ -16,17 +16,17 @@ class Creature:
     def damage(self):
         return self.__damage
 
-    def attack(self, enemy):
-        for e in enemy:
+    def attack(self, enemies):
+        for enemy in enemies:
             print(f"{self.name} greift mit {self.damage} Schaden an.")
-            e.take_damage(self.damage)
+            enemy.take_damage(self.damage)
 
     def take_damage(self, damage):
         self.__health -= damage
-        if self.__health <= 0:
+        if self.health <= 0:
             self.die()
         else:
-            print(f"{self.name} hat noch {self.__health} Leben.")
+            print(f"{self.name} hat noch {self.health} Leben.")
 
     def level_up(self):
         level_up_attribute = random.randint(0, 1)
@@ -37,3 +37,4 @@ class Creature:
 
     def die(self):
         print(f"{self.name} ist gestorben.")
+        del self

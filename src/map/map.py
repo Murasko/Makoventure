@@ -1,33 +1,16 @@
-from .field import gen_random
+from src.creatures.enemies.enemy import Enemy
 
 
 class Map:
-    def __init__(self, width, height):
-        self.__x = 0
-        self.__y = 0
-        self.state = []
-        for i in range(width):
-            fields = []
-            for j in range(height):
-                fields.append(gen_random())
-            self.state.append(fields)
+    def __init__(self):
+        self.current_field = []
+        pass
 
     @property
-    def map(self):
-        return self.state[self.__x][self.__y].print_state()
+    def field(self):
+        return self.current_field
 
-    @property
-    def enemies(self):
-        return self.state[self.__x][self.__y].enemies
-
-    def move_forward(self):
-        self.__y += 1
-
-    def move_left(self):
-        self.__x -= 1
-
-    def move_right(self):
-        self.__x += 1
-
-    def move_backward(self):
-        self.__y -= 1
+    @field.setter
+    def field(self, enemy_amount):
+        for i in range(1, enemy_amount):
+            self.current_field.append(Enemy)
