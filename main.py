@@ -10,7 +10,7 @@ if __name__ == '__main__':
         command = input("> ").lower()
         match command:
             case "next":
-                m.next()
+                m.next(p)
             case "help":
                 cli_help()
             case "attack":
@@ -21,6 +21,11 @@ if __name__ == '__main__':
                         p.attack(enemy)
                         if enemy.is_dead:
                             m.current_field.remove(enemy)
+                        print("")
+                        enemy.attack(p)
+                        if p.is_dead:
+                            print("Du bist leider gestorben, viel Glück beim nächsten mal.")
+                            exit()
             case "exit":
                 print("Bis zum nächsten mal!")
                 exit()
