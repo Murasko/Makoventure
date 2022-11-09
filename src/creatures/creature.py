@@ -7,6 +7,7 @@ class Creature:
         self.__health = 10
         self.__damage = 5
         self.level = 1
+        self.is_dead = False
 
     @property
     def health(self):
@@ -16,10 +17,9 @@ class Creature:
     def damage(self):
         return self.__damage
 
-    def attack(self, enemies):
-        for enemy in enemies:
-            print(f"{self.name} greift mit {self.damage} Schaden an.")
-            enemy.take_damage(self.damage)
+    def attack(self, enemy):
+        print(f"{self.name} greift mit {self.damage} Schaden an.")
+        enemy.take_damage(self.damage)
 
     def take_damage(self, damage):
         self.__health -= damage
@@ -37,4 +37,4 @@ class Creature:
 
     def die(self):
         print(f"{self.name} ist gestorben.")
-        del self
+        self.is_dead = True
