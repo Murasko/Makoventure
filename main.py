@@ -26,6 +26,8 @@ if __name__ == '__main__':
                         if p.is_dead:
                             print("Du bist leider gestorben, viel Glück beim nächsten mal.")
                             exit()
+            case "heal":
+                p.heal()
             case "exit":
                 print("Bis zum nächsten mal!")
                 exit()
