@@ -34,6 +34,7 @@ class Creature:
             print("Du bist bereits vollständig geheilt.")
         elif self.health + amount > self._max_health:
             self._health = self._max_health
+            print(f"{self.name} heilt sich und hat jetzt {self.health} Leben.")
         else:
             self._health += amount
             print(f"{self.name} heilt sich und hat jetzt {self.health} Leben.")
