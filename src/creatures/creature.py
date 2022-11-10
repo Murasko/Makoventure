@@ -4,7 +4,8 @@ import random
 class Creature:
     def __init__(self):
         self.name = "Undefined Name"
-        self._health = 10
+        self._max_health = 10
+        self._health = self._max_health
         self._damage = 3
         self.level = 1
         self.is_dead = False
@@ -28,9 +29,14 @@ class Creature:
         else:
             print(f"{self.name} hat noch {self.health} Leben.")
 
-    def heal(self):
-        self._health += 5
-        print(f"{self.name} heilt sich und hat jetzt {self.health} Leben.")
+    def heal(self, amount=5):
+        if self.health == self._max_health:
+            print("Du bist bereits vollständig geheilt.")
+        elif self.health + amount > self._max_health:
+            self._health = self._max_health
+        else:
+            self._health += amount
+            print(f"{self.name} heilt sich und hat jetzt {self.health} Leben.")
 
     def level_up(self):
         level_up_attribute = random.randint(0, 1)

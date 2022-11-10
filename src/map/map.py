@@ -7,7 +7,7 @@ class Map:
         self.level = 1
         self.current_field = []
 
-    def next(self, player):
+    def forward(self, player):
         if len(self.current_field) > 0:
             print("Du kannst erst weiter gehen, wenn du alle Gegner besiegt hast.")
         else:
