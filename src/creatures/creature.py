@@ -7,9 +7,17 @@ class Creature:
         self._max_health = 10
         self._health = self._max_health
         self._damage = 3
-        self.level = 1
+        self._level = 1
         self._exp = 0
         self.is_dead = False
+
+    @property
+    def level(self):
+        return self._level
+
+    @level.setter
+    def level(self, amount):
+        self._level = amount
 
     @property
     def exp(self):
@@ -73,13 +81,15 @@ class Creature:
     def level_up(self, player=False):
         level_up_attribute = random.randint(0, 1)
         if level_up_attribute == 0:
-            self.health += 3
+            self.max_health += 3
             if player:
-                print(f"Du bist aufgestiegen und hast nun {self.health} Leben.")
+                print(f"Du bist aufgestiegen und hast nun maximal {self.max_health} Leben.")
+                self.level += 1
         else:
             self.damage += 1
             if player:
                 print(f"Du bist aufgestiegen und hast nun {self.damage} Schaden.")
+                self.level += 1
 
     def die(self):
         print(f"{self.name} ist gestorben.")
