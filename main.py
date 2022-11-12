@@ -1,26 +1,13 @@
 from src.creatures.player.player import Player
 from src.map.map import Map
-from src.commands import *
-
+from src.game_context import GameContext
+from src.commands.command_handler import CommandHandler
 
 if __name__ == '__main__':
     name = input("Enter your name:\n> ")
     p = Player(name)
     m = Map()
+    game_context = GameContext(p, m)
+    command_handler = CommandHandler(game_context)
     print("Type 'help' to get help")
-    while True:
-        command = input("> ").lower()
-        match command:
-            case "forward":
-                move.forward(p, m)
-            case "help":
-                help.cli_help()
-            case "attack":
-                battle.attack(p, m.current_field)
-            case "heal":
-                p.heal()
-            case "exit":
-                print("Bis zum nächsten mal!")
-                exit()
-            case _:
-                print("Unbekannte Eingabe!")
+    command_handler.handle()
