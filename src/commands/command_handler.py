@@ -3,7 +3,9 @@ from src.commands.battle import CommandBattle
 from src.commands.exit import CommandExit
 from src.commands.heal import CommandHeal
 from src.commands.help import CommandHelp
+from src.commands.license import CommandLicense
 from src.commands.move import CommandMove
+from src.commands.warranty import CommandWarranty
 
 class CommandHandler:
     def __init__(self, game_context):
@@ -13,7 +15,9 @@ class CommandHandler:
         self.add_command(CommandExit(self.game_context))
         self.add_command(CommandHeal(self.game_context))
         self.add_command(CommandHelp(self.game_context))
+        self.add_command(CommandLicense(self.game_context))
         self.add_command(CommandMove(self.game_context))
+        self.add_command(CommandWarranty(self.game_context))
     
     def add_command(self, command):
         if any(c.isupper() for c in command.name):
