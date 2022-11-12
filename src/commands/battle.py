@@ -6,8 +6,10 @@ def attack(player, enemies):
             player.attack(enemy)
             if enemy.is_dead:
                 enemies.remove(enemy)
+                break
             print("")
             enemy.attack(player)
+            print("")
             if player.is_dead:
                 print("Du bist leider gestorben, viel Glück beim nächsten mal.")
                 exit()
