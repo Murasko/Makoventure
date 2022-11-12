@@ -7,6 +7,7 @@ if __name__ == '__main__':
     name = input("Enter your name:\n> ")
     p = Player(name)
     m = Map()
+    print("Type 'help' to get help")
     while True:
         command = input("> ").lower()
         match command:
