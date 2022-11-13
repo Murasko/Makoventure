@@ -17,14 +17,23 @@
 #      Contact:
 #      info@murasko.de
 
-from src.creatures.creature import Creature
+from abc import ABC, abstractmethod
 
 
-class Player(Creature):
-    def __init__(self, name):
-        super().__init__()
+class CommandBase(ABC):
+    def __init__(self, game_context, name, description, aliases):
+        self.game_context = game_context
         self.name = name
-        self._max_health = 15
-        self._health = self._max_health
-        self._damage = 5
-
+        self.description = description
+        self.aliases = aliases
+    
+    @abstractmethod
+    def execute(self):
+        raise NotImplementedError("subclass must implement execute()!")
+    
+    # Wrapper methods for easier usage in subclasses
+    def get_player(self):
+        return self.game_context.player
+    
+    def get_world(self):
+        return self.game_context.world

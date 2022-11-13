@@ -20,15 +20,17 @@
 from src.commands.command_base import CommandBase
 
 
-class CommandHelp(CommandBase):
+class CommandWarranty(CommandBase):
     def __init__(self, game_context):
-        super(CommandHelp, self).__init__(game_context, "help", "Prints available commands for the player", ["info", "?", "-h"])
+        super(CommandWarranty, self).__init__(game_context, "warranty", "Prints the product warranty", ['w'])
     
-# TODO: Dynamic output
+    # TODO: Dynamic output
     def execute(self):
-        print("""Command help:
-help    -   prints help
-forward -   move forward to next field
-attack  -   execute one attack round
-heal    -   heal 5 health
-exit    -   close the game""")
+        print("""THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY
+APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT
+HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM "AS IS" WITHOUT WARRANTY
+OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM
+IS WITH YOU.  SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF
+ALL NECESSARY SERVICING, REPAIR OR CORRECTION.""")

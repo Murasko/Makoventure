@@ -1,3 +1,22 @@
+#      Makoventure - A basic Textadventure
+#      Copyright (C) 2022 Marco Murawski
+#
+#      This program is free software: you can redistribute it and/or modify
+#      it under the terms of the GNU General Public License as published by
+#      the Free Software Foundation, either version 3 of the License, or
+#      (at your option) any later version.
+#
+#      This program is distributed in the hope that it will be useful,
+#      but WITHOUT ANY WARRANTY; without even the implied warranty of
+#      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#      GNU General Public License for more details.
+#
+#      You should have received a copy of the GNU General Public License
+#      along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#
+#      Contact:
+#      info@murasko.de
+
 import random
 
 
@@ -12,11 +31,11 @@ class Creature:
         self.is_dead = False
 
     @property
-    def level(self):
+    def lvl(self):
         return self._level
 
-    @level.setter
-    def level(self, amount):
+    @lvl.setter
+    def lvl(self, amount):
         self._level = amount
 
     @property
@@ -84,12 +103,12 @@ class Creature:
             self.max_health += 3
             if player:
                 print(f"Du bist aufgestiegen und hast nun maximal {self.max_health} Leben.")
-                self.level += 1
+                self.lvl += 1
         else:
             self.damage += 1
             if player:
                 print(f"Du bist aufgestiegen und hast nun {self.damage} Schaden.")
-                self.level += 1
+                self.lvl += 1
 
     def die(self):
         print(f"{self.name} ist gestorben.")
