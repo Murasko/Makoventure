@@ -1,8 +1,28 @@
+#      Makoventure - A basic Textadventure
+#      Copyright (C) 2022 Marco Murawski
+#
+#      This program is free software: you can redistribute it and/or modify
+#      it under the terms of the GNU General Public License as published by
+#      the Free Software Foundation, either version 3 of the License, or
+#      (at your option) any later version.
+#
+#      This program is distributed in the hope that it will be useful,
+#      but WITHOUT ANY WARRANTY; without even the implied warranty of
+#      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#      GNU General Public License for more details.
+#
+#      You should have received a copy of the GNU General Public License
+#      along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#
+#      Contact:
+#      info@murasko.de
+
 from src.commands.command_base import CommandBase
+
 
 class CommandMove(CommandBase):
     def __init__(self, game_context):
-        super(CommandMove, self).__init__(game_context, "move", "Moves forward on the map", ["forward", "next", "m", "fo", "n"])
+        super(CommandMove, self).__init__(game_context, "move", "Moves forward on the world", ["forward", "next", "m", "fo", "n"])
     
     def execute(self):
-        self._get_map().forward(self._get_player())
+        self.get_world().forward(self.get_player())

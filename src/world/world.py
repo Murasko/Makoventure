@@ -17,13 +17,25 @@
 #      Contact:
 #      info@murasko.de
 
-from src.commands.command_base import CommandBase
+from src.creatures.enemies.enemy import Enemy
+import random
 
 
-class CommandExit(CommandBase):
-    def __init__(self, game_context):
-        super(CommandExit, self).__init__(game_context, "exit", "Exits the game", ["e"])
-    
-    def execute(self):
-        print("Bis zum nächsten mal!")
-        exit()
+class World:
+    def __init__(self):
+        self.level = 1
+        self.current_field = []
+
+    def forward(self, player):
+        if len(self.current_field) > 0:
+            print("Du kannst erst weiter gehen, wenn du alle Gegner besiegt hast.")
+        else:
+            enemy_amount = random.randint(1, int(self.level))
+            i = 0
+            while i < enemy_amount:
+                self.current_field.append(Enemy(f"Gegner {i + 1}", random.randint(player.level, player.level + 2)))
+                i += 1
+            for enemy in self.current_field:
+                print(f"Du siehst {enemy.name} mit Level {enemy.level}.")
+            self.level += 0.5
+            return self.current_field
