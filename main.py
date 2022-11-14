@@ -25,9 +25,9 @@ from src.commands.command_handler import CommandHandler
 
 def print_license_banner():
     print("""    Makoventure  Copyright (C) 2022  Marco Murawski
-    This program comes with ABSOLUTELY NO WARRANTY; for details type `warranty'.
+    This program comes with ABSOLUTELY NO WARRANTY; for details type 'warranty'.
     This is free software, and you are welcome to redistribute it
-    under certain conditions; type `license' for details.""")
+    under certain conditions; type 'license' for details.""")
 
 
 if __name__ == '__main__':
