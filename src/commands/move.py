@@ -25,4 +25,6 @@ class CommandMove(CommandBase):
         super().__init__(game_context, "move", "Moves forward on the world", ["forward", "next", "m", "fo", "n"])
     
     def execute(self):
-        self.get_world().forward(self.get_player())
+        world = self.get_world()
+        player = self.get_player()
+        world.move(player)
