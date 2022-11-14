@@ -37,7 +37,7 @@ class CommandHandler:
         self.add_command(CommandLicense(self.game_context))
         self.add_command(CommandMove(self.game_context))
         self.add_command(CommandWarranty(self.game_context))
-    
+
     def add_command(self, command):
         if any(c.isupper() for c in command.name):
             raise ValueError(f"Command {command.name} has an uppercase character in its name.")
