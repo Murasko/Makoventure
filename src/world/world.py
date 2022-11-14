@@ -24,19 +24,30 @@ import random
 
 class World:
     def __init__(self):
-        self.level = 1
+        self.stage = 1
         self.current_field = []
 
-    def forward(self, player):
+    def is_field_empty(self):
         if len(self.current_field) > 0:
-            print("Du kannst erst weiter gehen, wenn du alle Gegner besiegt hast.")
+            return False
         else:
-            enemy_amount = random.randint(1, int(self.level))
-            i = 0
-            while i < enemy_amount:
-                self.current_field.append(Enemy(f"Gegner {i + 1}", random.randint(player.lvl, player.lvl + 2)))
-                i += 1
-            for enemy in self.current_field:
-                print(f"Du siehst {enemy.name} mit Level {enemy.lvl}.")
-            self.level += 0.5
-            return self.current_field
+            return True
+
+    def generate_enemies(self, p_lvl):
+        enemy_amount = random.randint(1, int(self.stage))
+        while len(self.current_field) < enemy_amount:
+            enemy_level = random.randint(p_lvl, p_lvl + 2)
+            self.current_field.append(Enemy(f"Gegner {len(self.current_field) + 1 }", enemy_level))
+        self.stage += 0.4
+
+    def print_field(self):
+        for enemy in self.current_field:
+            print(f"{enemy.name} - Level {enemy.lvl}")
+
+    def move(self, player):
+        if self.is_field_empty():
+            self.generate_enemies(player.lvl)
+            print("Du gehst weiter und siehst:")
+            self.print_field()
+        else:
+            print("Du musst dir erst den Weg frei kämpfen")
