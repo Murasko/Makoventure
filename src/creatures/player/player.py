@@ -27,4 +27,3 @@ class Player(Creature):
         self._max_health = 15
         self._health = self._max_health
         self._damage = 5
-

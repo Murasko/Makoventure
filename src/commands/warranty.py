@@ -22,9 +22,8 @@ from src.commands.command_base import CommandBase
 
 class CommandWarranty(CommandBase):
     def __init__(self, game_context):
-        super(CommandWarranty, self).__init__(game_context, "warranty", "Prints the product warranty", ['w'])
-    
-    # TODO: Dynamic output
+        super().__init__(game_context,  "warranty", "Prints the product warranty", ['w'])
+
     def execute(self):
         print("""THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY
 APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT

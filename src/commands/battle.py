@@ -22,7 +22,7 @@ from src.commands.command_base import CommandBase
 
 class CommandBattle(CommandBase):
     def __init__(self, game_context):
-        super(CommandBattle, self).__init__(game_context, "battle", "Battles the current enemies", ["attack", "fight", "b", "a", "fi"])
+        super().__init__(game_context, "battle", "Battles the current enemies", ["attack", "fight", "b", "a", "fi"])
 
     def execute(self):
         if not self.get_world().current_field:

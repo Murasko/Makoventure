@@ -22,9 +22,8 @@ from src.commands.command_base import CommandBase
 
 class CommandLicense(CommandBase):
     def __init__(self, game_context):
-        super(CommandLicense, self).__init__(game_context, "license", "Prints the license", [])
+        super().__init__(game_context, "license", "Prints the license", [])
 
-    # TODO: Dynamic output
     def execute(self):
         print("""                    GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007

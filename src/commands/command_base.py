@@ -17,10 +17,10 @@
 #      Contact:
 #      info@murasko.de
 
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 
 
-class CommandBase(ABC):
+class CommandBase:
     def __init__(self, game_context, name, description, aliases):
         self.game_context = game_context
         self.name = name
@@ -30,7 +30,7 @@ class CommandBase(ABC):
     @abstractmethod
     def execute(self):
         raise NotImplementedError("subclass must implement execute()!")
-    
+
     # Wrapper methods for easier usage in subclasses
     def get_player(self):
         return self.game_context.player

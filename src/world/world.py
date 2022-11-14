@@ -18,6 +18,7 @@
 #      info@murasko.de
 
 from src.creatures.enemies.enemy import Enemy
+
 import random
 
 
@@ -33,9 +34,9 @@ class World:
             enemy_amount = random.randint(1, int(self.level))
             i = 0
             while i < enemy_amount:
-                self.current_field.append(Enemy(f"Gegner {i + 1}", random.randint(player.level, player.level + 2)))
+                self.current_field.append(Enemy(f"Gegner {i + 1}", random.randint(player.lvl, player.lvl + 2)))
                 i += 1
             for enemy in self.current_field:
-                print(f"Du siehst {enemy.name} mit Level {enemy.level}.")
+                print(f"Du siehst {enemy.name} mit Level {enemy.lvl}.")
             self.level += 0.5
             return self.current_field

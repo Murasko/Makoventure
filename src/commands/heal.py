@@ -22,8 +22,7 @@ from src.commands.command_base import CommandBase
 
 class CommandHeal(CommandBase):
     def __init__(self, game_context):
-        super(CommandHeal, self).__init__(game_context, "heal", "Heals the player", ["restore", "rest", "h", "r"])
-    
-# TODO: Dynamic output
+        super().__init__(game_context, "heal", "Heals the player", ["restore", "rest", "h", "r"])
+
     def execute(self):
         self.get_player().heal()
