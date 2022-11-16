@@ -23,19 +23,22 @@ import random
 class Creature:
     def __init__(self):
         self.name = "Undefined Name"
-        self._max_health = 8
+        self._max_health = 0
         self._health = self._max_health
-        self._damage = 3
+        self._damage = 0
         self._level = 1
         self._exp = 0
-        self.is_dead = False
+        self._is_dead = False
+        self.is_player = False
+
+# Properties / Getter & Setter
 
     @property
-    def lvl(self):
+    def level(self):
         return self._level
 
-    @lvl.setter
-    def lvl(self, amount):
+    @level.setter
+    def level(self, amount):
         self._level = amount
 
     @property
@@ -70,45 +73,27 @@ class Creature:
     def damage(self, amount):
         self._damage = amount
 
+    @property
+    def is_dead(self):
+        return self._is_dead
+
+    @is_dead.setter
+    def is_dead(self, value):
+        self._is_dead = value
+
+# Functions
+
     def attack(self, enemy):
-        print(f"{self.name} greift mit {self.damage} Schaden an.")
-        enemy.take_damage(self.damage)
-        if enemy.is_dead:
-            self.exp += 2
-        if self.exp >= 10:
-            self.level_up(True)
-            self.exp = 0
-            return self._exp
+        enemy.health -= self.damage
 
-    def take_damage(self, damage):
-        self.health -= damage
-        if self.health <= 0:
-            self.die()
-        else:
-            print(f"{self.name} hat noch {self.health} Leben.")
+    def heal(self):
+        self.health = self.max_health
 
-    def heal(self, amount=5):
-        if self.health == self.max_health:
-            print("Du bist bereits vollständig geheilt.")
-        elif self.health + amount > self.max_health:
-            self.health = self.max_health
-            print(f"{self.name} heilt sich und hat jetzt {self.health} Leben.")
-        else:
-            self.health += amount
-            print(f"{self.name} heilt sich und hat jetzt {self.health} Leben.")
-
-    def level_up(self, player=False):
+# LevelUp one Random Attribute
+    def level_up(self):
         if random.randint(0, 1) == 0:
             self.max_health += 3
-            if player:
-                print(f"Du bist aufgestiegen und hast nun maximal {self.max_health} Leben.")
-                self.lvl += 1
+            self.level += 1
         else:
             self.damage += 1
-            if player:
-                print(f"Du bist aufgestiegen und hast nun {self.damage} Schaden.")
-                self.lvl += 1
-
-    def die(self):
-        print(f"{self.name} ist gestorben.")
-        self.is_dead = True
+            self.level += 1
