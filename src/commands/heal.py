@@ -27,4 +27,5 @@ class CommandHeal(CommandBase):
     def execute(self):
         player = self.get_player()
         player.heal()
-        print(f"Du wurdest geheilt und hast nun wieder {player.health} Leben.")
+        if player.is_player:
+            print(f"Du wurdest geheilt und hast nun wieder {player.health} Leben.")

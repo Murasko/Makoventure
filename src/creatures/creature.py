@@ -93,6 +93,7 @@ class Creature:
     def level_up(self):
         if random.randint(0, 1) == 0:
             self.max_health += 3
+            self.heal()
             self.level += 1
         else:
             self.damage += 1
