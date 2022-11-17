@@ -95,9 +95,9 @@ class Creature:
             self.level += 1
             self.heal()
             if self.is_player:
-                print(f"Du wurdest geheilt und hast nun {self.health} Leben.")
+                print(f"\nLEVEL UP!\nDu wurdest geheilt und hast nun {self.health} Leben.")
         else:
             self.damage += 1
             self.level += 1
             if self.is_player:
-                print(f"Du greifst nun mit {self.damage} Schaden an.")
+                print(f"\nLEVEL UP!\nDu greifst nun mit {self.damage} Schaden an.")

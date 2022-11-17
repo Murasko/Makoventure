@@ -26,46 +26,43 @@ class CommandBattle(CommandBase):
         super().__init__(game_context, "battle", "Battles the current enemies", ["attack", "fight", "b", "a", "fi"])
 
     def execute(self):
-        world = self.get_world()
-        field = world.current_field
-        dead_enemies = world.dead_enemies
+        field = self.get_world().current_field
         player = self.get_player()
         if not field:
             print("Keine Gegner zum angreifen.")
         else:
             for enemy in field:
                 enemy.attack(player)
-                self.check_health(player, field)
+                self.check_health(player)
 
             for enemy in field:
                 player.attack(enemy)
-                self.check_health(enemy, field)
-            self.print_battle_state(field, player)
-            self.get_exp(dead_enemies, player)
-            self.check_levelup(player)
+                self.check_health(enemy)
+            self.print_battle_state()
+            self.check_levelup()
 
-    def enemy_died(self, field, enemy):
-        field.remove(enemy)
+    def enemy_died(self, enemy):
+        self.get_world().current_field.remove(enemy)
 
-    def check_health(self, creature, field):
+    def check_health(self, creature):
         if creature.health <= 0 and creature.is_player:
             print("Du bist leider gestorben. Viel Erfolg beim nächsten mal!")
             exit()
         elif creature.health <= 0:
-            self.enemy_died(field, creature)
+            self.enemy_died(creature)
+            self.get_player().exp += 4
             print(f"{creature.name} wurde getötet.")
 
-    def print_battle_state(self, field, player):
+    def print_battle_state(self):
+        field = self.get_world().current_field
+        player = self.get_player()
         for creature in field:
             print(f"{creature.name}: {creature.health} HP verbleibend.")
         print()
         print(f"{player.name}: {player.health} HP verbleibend.")
 
-    def get_exp(self, dead_enemies, player):
-        for _ in range(dead_enemies):
-            player.exp += 4
-
-    def check_levelup(self, player):
+    def check_levelup(self):
+        player = self.get_player()
         if player.exp >= 10:
             player.level_up()
             player.exp -= 10

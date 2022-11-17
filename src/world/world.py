@@ -26,7 +26,6 @@ class World:
     def __init__(self):
         self.stage = 1
         self.current_field = []
-        self.dead_enemies = 0
 
     def is_field_empty(self):
         if len(self.current_field) > 0:
