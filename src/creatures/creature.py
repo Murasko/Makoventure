@@ -89,12 +89,15 @@ class Creature:
     def heal(self):
         self.health = self.max_health
 
-# LevelUp one Random Attribute
     def level_up(self):
         if random.randint(0, 1) == 0:
             self.max_health += 3
-            self.health = self.max_health
             self.level += 1
+            self.heal()
+            if self.is_player:
+                print(f"Du wurdest geheilt und hast nun {self.health} Leben.")
         else:
             self.damage += 1
             self.level += 1
+            if self.is_player:
+                print(f"Du greifst nun mit {self.damage} Schaden an.")
