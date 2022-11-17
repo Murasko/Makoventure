@@ -24,7 +24,9 @@ class Enemy(Creature):
     def __init__(self, name, level):
         super().__init__()
         self.name = name
-        self._level = level
-        if self._level != 1:
-            for i in range(1, self._level):
+        self._max_health = 8
+        self._health = self._max_health
+        self._damage = 4
+        if level != 1:
+            for i in range(1, level):
                 self.level_up()

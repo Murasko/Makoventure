@@ -42,11 +42,11 @@ class World:
 
     def print_field(self):
         for enemy in self.current_field:
-            print(f"{enemy.name} - Level {enemy.lvl}")
+            print(f"{enemy.name} - LVL: {enemy.level}, HP: {enemy.health}, DMG: {enemy.damage}")
 
     def move(self, player):
         if self.is_field_empty():
-            self.generate_enemies(player.lvl)
+            self.generate_enemies(player.level)
             print("Du gehst weiter und siehst:")
             self.print_field()
         else:

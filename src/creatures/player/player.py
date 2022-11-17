@@ -24,6 +24,7 @@ class Player(Creature):
     def __init__(self, name):
         super().__init__()
         self.name = name
-        self._max_health = 15
-        self._health = self._max_health
-        self._damage = 5
+        self.max_health = 15
+        self.health = self.max_health
+        self.damage = 5
+        self.is_player = True

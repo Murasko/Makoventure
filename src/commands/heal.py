@@ -25,4 +25,7 @@ class CommandHeal(CommandBase):
         super().__init__(game_context, "heal", "Heals the player", ["restore", "rest", "h", "r"])
 
     def execute(self):
-        self.get_player().heal()
+        player = self.get_player()
+        player.heal()
+        if player.is_player:
+            print(f"Du wurdest geheilt und hast nun wieder {player.health} Leben.")
